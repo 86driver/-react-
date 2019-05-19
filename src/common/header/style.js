@@ -69,6 +69,20 @@ export const NavSearch = styled.input`
     width: 240px;
     padding: 10px 40px 10px 20px;
   }
+  &.slide-enter{
+    width: 160px;
+  }
+  &.slide-enter-active{
+    width: 240px;
+    transition: all .2s ease-out;
+  }
+  &.slide-exit{
+    width: 240px;
+  }
+  &.slide-exit-active {
+    transition: all .2s ease-out;
+    width: 160px;
+  }
 `
 
 export const Addition = styled.div`
@@ -114,19 +128,5 @@ export const SearchWrapper = styled.div`
       background: #aaa;
       color: #fff;
     }
-  }
-  .slide-enter{
-    width: 160px;
-  }
-  .slide-enter-active{
-    width: 240px;
-    transition: all .2s ease-out;
-  }
-  .slide-exit{
-    width: 240px;
-  }
-  .slide-exit-active {
-    transition: all .2s ease-out;
-    width: 160px;
   }
 `
