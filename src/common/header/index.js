@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
 import {
 	HeaderWrapper,
 	Logo,
@@ -13,27 +14,6 @@ import {
 } from './style'
 
 class Header extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			focused: false
-		}
-		this.hanldeInputFocus = this.hanldeInputFocus.bind(this)
-		this.handleInputBlur = this.handleInputBlur.bind(this)
-	}
-
-	hanldeInputFocus() {
-		this.setState({
-			focused: true
-		})
-	}
-
-	handleInputBlur() {
-		this.setState({
-			focused: false
-		})
-	}
-
 	render() {
 		return (
 			<HeaderWrapper>
@@ -44,13 +24,15 @@ class Header extends Component {
 						<NavItem>下载App</NavItem>
 						<SearchWrapper>
 							<CSSTransition
-								in={this.state.focused}
+								in={this.props.focused}
 								timeout={200}
 								classNames="slide"
 							>
-								<NavSearch className={this.state.focused ? 'focused' : ''} placeholder="搜索" onFocus={this.hanldeInputFocus} onBlur={this.handleInputBlur}></NavSearch>
+								<NavSearch className={this.props.focused ? 'focused' : ''} placeholder="搜索"
+									onFocus={this.props.hanldeInputFocus} onBlur={this.props.handleInputBlur}>
+								</NavSearch>
 							</CSSTransition>
-							<i className={this.state.focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
+							<i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
 						</SearchWrapper>
 					</NavItemGroup>
 					<NavItemGroup>
@@ -67,4 +49,27 @@ class Header extends Component {
 	}
 }
 
-export default Header
+const mapStateToProps = (state) => {
+	return {
+		focused: state.headerReducer.focused
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		hanldeInputFocus() {
+			const action = {
+				type: 'search_focus'
+			}
+			dispatch(action)
+		},
+		handleInputBlur() {
+			const action = {
+				type: 'search_blur'
+			}
+			dispatch(action)
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
