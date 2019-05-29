@@ -11,7 +11,11 @@ import {
 	NavSearch,
 	Addition,
 	Button,
-	SearchWrapper
+	SearchWrapper,
+	SearchInfo,
+	SearchInfoTitle,
+	SearchInfoSwitch,
+	SearchInfoItem,
 } from './style'
 
 class Header extends Component {
@@ -34,6 +38,25 @@ class Header extends Component {
 								</NavSearch>
 							</CSSTransition>
 							<i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
+							<SearchInfo>
+								<SearchInfoTitle>
+									热门搜索
+									<SearchInfoSwitch>换一批</SearchInfoSwitch>
+									<div>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+										<SearchInfoItem>教育</SearchInfoItem>
+									</div>
+								</SearchInfoTitle>
+							</SearchInfo>
 						</SearchWrapper>
 					</NavItemGroup>
 					<NavItemGroup>
