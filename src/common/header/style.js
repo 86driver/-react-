@@ -159,8 +159,8 @@ export const SearchInfoItem = styled.a`
   line-height: 20px;
   padding: 0 5px;
   border: 1px solid #ddd;
-  color: #969696;
-  border-radius: 2px;
+  color: #787878;
+  border-radius: 3px;
   display: block;
   float: left;
   margin: 10px 10px 0 0;

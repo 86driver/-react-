@@ -18,7 +18,38 @@ import {
 	SearchInfoItem,
 } from './style'
 
+
 class Header extends Component {
+	constructor(props) {
+		super(props)
+		this.getListArea = this.getListArea.bind(this)
+	}
+	getListArea() {
+		const { focused, list, page } = this.props
+		const pageList = []
+		const newList = list.toJS()
+		for (let i = (page - 1) * 10; i < page * 10; i++) {
+			pageList.push(
+				<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+			)
+		}
+		if (focused) {
+			return (
+				<SearchInfo>
+					<SearchInfoTitle>
+						热门搜索
+					<SearchInfoSwitch>换一批</SearchInfoSwitch>
+						<div>
+							{pageList}
+						</div>
+					</SearchInfoTitle>
+				</SearchInfo>
+			)
+		} else {
+			return null
+		}
+	}
+
 	render() {
 		return (
 			<HeaderWrapper>
@@ -38,25 +69,7 @@ class Header extends Component {
 								</NavSearch>
 							</CSSTransition>
 							<i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
-							<SearchInfo>
-								<SearchInfoTitle>
-									热门搜索
-									<SearchInfoSwitch>换一批</SearchInfoSwitch>
-									<div>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-										<SearchInfoItem>教育</SearchInfoItem>
-									</div>
-								</SearchInfoTitle>
-							</SearchInfo>
+							{this.getListArea(this.props.focused)}
 						</SearchWrapper>
 					</NavItemGroup>
 					<NavItemGroup>
@@ -75,13 +88,16 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		focused: state.getIn(['headerReducer', 'focused'])
+		focused: state.getIn(['headerReducer', 'focused']),
+		list: state.getIn(['headerReducer', 'list']),
+		page: state.getIn(['headerReducer', 'page'])
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		hanldeInputFocus() {
+			dispatch(actionCreators.getList())
 			dispatch(actionCreators.search_focus())
 		},
 		handleInputBlur() {
