@@ -105,7 +105,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		hanldeInputFocus(list) {
-			if (list.size == 0) {
+			if (list.size === 0) {
 				dispatch(actionCreators.getList())
 			}
 			dispatch(actionCreators.search_focus())
