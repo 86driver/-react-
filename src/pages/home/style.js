@@ -22,3 +22,10 @@ export const HomeRight = styled.div`
   width: 240px;
   float: right;
 `
+/**
+ *  Topic组件样式表
+ */
+
+export const TopicWrapper = styled.div`
+  padding: 20px 0 10px; 0;
+`
