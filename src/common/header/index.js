@@ -25,20 +25,25 @@ class Header extends Component {
 		this.getListArea = this.getListArea.bind(this)
 	}
 	getListArea() {
-		const { focused, list, page } = this.props
+		const { mouseIn, focused, list, page, handleMouseEnter, handleMouseLeave, handleChangePage, totalPage } = this.props
 		const pageList = []
 		const newList = list.toJS()
-		for (let i = (page - 1) * 10; i < page * 10; i++) {
-			pageList.push(
-				<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
-			)
+		if (newList.length) {
+			for (let i = (page - 1) * 10; i < page * 10; i++) {
+				pageList.push(
+					<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+				)
+			}
 		}
-		if (focused) {
+		if (focused || mouseIn) {
 			return (
-				<SearchInfo>
+				<SearchInfo
+					onMouseEnter={() => { handleMouseEnter() }}
+					onMouseLeave={() => { handleMouseLeave() }}
+				>
 					<SearchInfoTitle>
 						热门搜索
-					<SearchInfoSwitch>换一批</SearchInfoSwitch>
+					<SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
 						<div>
 							{pageList}
 						</div>
@@ -51,6 +56,7 @@ class Header extends Component {
 	}
 
 	render() {
+		const { focused, list, hanldeInputFocus, handleInputBlur } = this.props
 		return (
 			<HeaderWrapper>
 				<Logo href="/"></Logo>
@@ -60,16 +66,16 @@ class Header extends Component {
 						<NavItem>下载App</NavItem>
 						<SearchWrapper>
 							<CSSTransition
-								in={this.props.focused}
+								in={focused}
 								timeout={200}
 								classNames="slide"
 							>
-								<NavSearch className={this.props.focused ? 'focused' : ''} placeholder="搜索"
-									onFocus={this.props.hanldeInputFocus} onBlur={this.props.handleInputBlur}>
+								<NavSearch className={focused ? 'focused' : ''} placeholder="搜索"
+									onFocus={() => hanldeInputFocus(list)} onBlur={handleInputBlur}>
 								</NavSearch>
 							</CSSTransition>
-							<i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
-							{this.getListArea(this.props.focused)}
+							<i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe6cf;</i>
+							{this.getListArea(focused)}
 						</SearchWrapper>
 					</NavItemGroup>
 					<NavItemGroup>
@@ -90,18 +96,35 @@ const mapStateToProps = (state) => {
 	return {
 		focused: state.getIn(['headerReducer', 'focused']),
 		list: state.getIn(['headerReducer', 'list']),
-		page: state.getIn(['headerReducer', 'page'])
+		page: state.getIn(['headerReducer', 'page']),
+		mouseIn: state.getIn(['headerReducer', 'mouseIn']),
+		totalPage: state.getIn(['headerReducer', 'totalPage'])
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		hanldeInputFocus() {
-			dispatch(actionCreators.getList())
+		hanldeInputFocus(list) {
+			if (list.size == 0) {
+				dispatch(actionCreators.getList())
+			}
 			dispatch(actionCreators.search_focus())
 		},
 		handleInputBlur() {
 			dispatch(actionCreators.search_blur())
+		},
+		handleMouseEnter() {
+			dispatch(actionCreators.mouseEnter())
+		},
+		handleMouseLeave() {
+			dispatch(actionCreators.mouseLeave())
+		},
+		handleChangePage(page, totalPage) {
+			if (page < totalPage) {
+				dispatch(actionCreators.changePage(page + 1))
+			} else {
+				dispatch(actionCreators.changePage(1))
+			}
 		}
 	}
 }

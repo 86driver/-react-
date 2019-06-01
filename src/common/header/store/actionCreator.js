@@ -29,3 +29,22 @@ export const getList = () => {
       })
   }
 }
+
+export const mouseEnter = () => {
+  return {
+    type: constants.MOUSE_ENTER
+  }
+}
+
+export const mouseLeave = () => {
+  return {
+    type: constants.MOUSE_LEAVE
+  }
+}
+
+export const changePage = (page) => {
+  return {
+    type: constants.CHANGE_PAGE,
+    page
+  }
+}
