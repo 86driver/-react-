@@ -19,7 +19,7 @@ export const HomeLeft = styled.div`
 `
 
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `
 /**
@@ -29,3 +29,78 @@ export const HomeRight = styled.div`
 export const TopicWrapper = styled.div`
   padding: 20px 0 10px; 0;
 `
+
+/**
+ *  Recommend组件样式表
+ */
+
+export const RecommendWrapper = styled.div`
+  margin: 25px 0 30px 0;
+  width: 280px;
+`
+
+export const RecommendItem = styled.div`
+  width: 280px;
+  margin: 5px 0;
+  height: 50px;
+  background: url(${(props) => props.imgUrl});
+  background-size: contain;
+`
+
+/**
+ *  Writer组件样式表
+ */
+
+export const WriterWrapper = styled.div`
+  .recommend-writer{
+    font-size: 14px;
+    color: #969696;
+  }
+ `
+
+export const WriterItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .img-url{
+    img{
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+    }
+  }
+  .author{
+    margin-left: 10px;
+    .author-name{
+      font-size: 14px;
+      color: #333;
+    }
+    .author-des{
+      margin-top: 5px;
+      font-size: 12px;
+      color: #969696;
+    }
+  }
+ `
+
+/**
+ * List（Article） 组件样式表
+ */
+
+export const ArticleWrapper = styled.div`
+ 
+ `
+
+export const ArticleItem = styled.div`
+  display: flex;
+  align-items: center;
+  .left{}
+  .right{
+    img{
+      width: 150px;
+      height: 100px;
+      border-radius: 5px;
+    }
+  }
+ `
