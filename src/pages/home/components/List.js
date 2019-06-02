@@ -15,8 +15,8 @@ class List extends Component {
                   <div className="content">{item.get('content')}</div>
                   <div className="tips">
                     <span className="author">{item.get('author')}</span>
-                    <span className="reply">{item.get('reply')}</span>
-                    <span className="like">{item.get('like')}</span>
+                    <span className="reply">{item.get('reply')}回复</span>
+                    <span className="like">{item.get('like')}喜欢</span>
                   </div>
                 </div>
                 <div className="right">

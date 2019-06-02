@@ -17,7 +17,7 @@ const defaultState = fromJS({
       title: '为什么和对象在一块，更喜欢接吻而不是做爱',
       content: '首先申明我不是性冷淡，只是更喜欢接吻，接吻可以让我感受到爱意。现在记忆犹新的是竟然可以从接吻中体会到对方的思念，而做爱之前的接吻可以算作是...',
       author: '酸掉吖的柠檬',
-      replay: '18',
+      reply: '18',
       like: '66'
     },
     {
@@ -26,7 +26,7 @@ const defaultState = fromJS({
       imgUrl: 'http://upload-images.jianshu.io/upload_images/16219839-200e3d8b8b7133ad.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240',
       content: '终于明白，有些路，只能一个人走。那些邀约好同行的人，一起相伴雨季，走过年华，但有一天终究会在某个渡口离散。山和水可以两两相忘，日与月可以毫无瓜葛...',
       author: '狸米蜜',
-      replay: '9',
+      reply: '9',
       like: '44'
     }
   ],

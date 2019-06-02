@@ -95,7 +95,31 @@ export const ArticleWrapper = styled.div`
 export const ArticleItem = styled.div`
   display: flex;
   align-items: center;
-  .left{}
+  margin-bottom: 15px;
+  .left{
+    margin-right: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    .title{
+      margin: -7px 0 4px;
+      display: inherit;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .content{
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 24px;
+      color: #999;
+    }
+    .tips{
+      margin-bottom: 10px;
+      span{
+        color: #b4b4b4;
+        font-size: 12px;
+        padding-left: 10px;
+      }
+    }
+  }
   .right{
     img{
       width: 150px;
