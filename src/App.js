@@ -14,10 +14,10 @@ function App() {
       <GlobalStyled />
       <IconfontStyle />
       <Provider store={store}>
-        <Header></Header>
         <HashRouter>
+          <Header></Header>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/index" component={Detail}></Route>
+          <Route path="/detail" component={Detail}></Route>
         </HashRouter>
       </Provider>
     </div>

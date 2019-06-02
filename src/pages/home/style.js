@@ -22,6 +22,20 @@ export const HomeRight = styled.div`
   width: 280px;
   float: right;
 `
+
+export const BackTop = styled.div`
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`
+
 /**
  *  Topic组件样式表
  */
