@@ -6,7 +6,7 @@ import store from './store/index'
 import { Provider } from 'react-redux'
 import { HashRouter, Route } from 'react-router-dom'
 import Home from './pages/home'
-import Detail from './pages/detail'
+import Detail from './pages/detail/loadable.js'
 
 function App() {
   return (
